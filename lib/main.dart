@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:toast/toast.dart';
 import 'package:imagebutton/imagebutton.dart';
-
+import "loginScreen.dart";
 void main() {
   runApp(MyApp());
 }
@@ -29,13 +30,6 @@ final String title;
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       pressedImage: Image.asset("assets/loginScreen/fbBtn_pressed.png",),
                       unpressedImage: Image.asset("assets/loginScreen/fbBtn.png"),
                       onTap: () {
-                        print('test');
+
                       },
                     ),
                     ),
@@ -79,8 +73,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         height: 0.37*MediaQuery.of(context).size.width*0.50,
                         pressedImage: Image.asset("assets/loginScreen/loginBtn_pressed.png",),
                         unpressedImage: Image.asset("assets/loginScreen/loginBtn.png"),
-                        onTap: () {
-                          print('test');
+                        onTap: ()
+                        {
+                          print("alpha");
+                          showToast("Show Long Toast", duration: Toast.LENGTH_LONG);
                         },
                       ),
 
@@ -93,8 +89,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         pressedImage: Image.asset("assets/loginScreen/signupBtn_pressed.png",),
                         unpressedImage: Image.asset("assets/loginScreen/signupBtn.png"),
                         onTap: () {
-                          print('test');
-                        },
+
+                        }
                       ),
                       ),
                     ],
@@ -107,5 +103,8 @@ class _MyHomePageState extends State<MyHomePage> {
        ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+  void showToast(String msg, {int duration, int gravity}) {
+    Toast.show(msg, context, duration: duration, gravity: gravity);
   }
 }
